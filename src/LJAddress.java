@@ -9,4 +9,8 @@ public class LJAddress {
         this.url = url;
     }
 
+    @Override
+    public String toString() {
+        return url;
+    }
 }

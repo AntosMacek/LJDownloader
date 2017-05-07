@@ -29,6 +29,9 @@ public class AddressAsker {
         if (!input.contains(Z.LJ_POSTFIX)) {
             input = input + Z.LJ_POSTFIX;
         }
+        if (!input.contains(Z.URL_PREFIX)) {
+            input = Z.URL_PREFIX + input;
+        }
         Y.log("Parsing address will be: " + input);
         return input;
     }

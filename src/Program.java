@@ -26,7 +26,7 @@ public class Program {
 
     private Map<PostingDate, LJAddress> createLinksMap() {
         LinksMapCreator mapCreator = new LinksMapCreator();
-        return mapCreator.createMap();
+        return mapCreator.createMap(address);
     }
 
     private void prepareDirectories() {

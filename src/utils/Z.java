@@ -3,6 +3,8 @@ package utils;
 /**
  * Created by Antoha on 5/7/2017.
  */
+
+/** Class with constants */
 public class Z {
 
     // Special symbols
@@ -13,6 +15,7 @@ public class Z {
 
     // LJ templates
     public static final String LJ_POSTFIX = ".livejournal.com";
+    public static final String URL_PREFIX = "http://";
 
     // Console messages
     public static final String STARTING_MESSAGE = NEW_LINE + "Enter Live Journal to download: ";
