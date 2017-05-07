@@ -5,8 +5,8 @@ import java.util.Map;
  */
 public class Program {
 
-    private final LJAddress address;
-    private final Map<PostingDate, LJAddress> linksMap;
+    private final String address;
+    private final Map<String, String> linksMap;
 
     public Program() {
         address = askAddress();
@@ -19,14 +19,14 @@ public class Program {
         createPDF();
     }
 
-    private LJAddress askAddress() {
+    private String askAddress() {
         AddressAsker asker = new AddressAsker();
         return asker.askAddress();
     }
 
-    private Map<PostingDate, LJAddress> createLinksMap() {
-        LinksMapCreator mapCreator = new LinksMapCreator();
-        return mapCreator.createMap(address);
+    private Map<String, String> createLinksMap() {
+        LinksMapCreator mapCreator = new LinksMapCreator(address);
+        return mapCreator.createMap();
     }
 
     private void prepareDirectories() {

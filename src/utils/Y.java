@@ -7,7 +7,7 @@ package utils;
 /** Class with utility methods */
 public class Y {
 
-    public static void log(String msg) {
+    public static void log(Object msg) {
         System.out.println(msg);
     }
 

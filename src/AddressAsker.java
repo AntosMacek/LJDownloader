@@ -10,8 +10,8 @@ public class AddressAsker {
 
     public AddressAsker() {}
 
-    public LJAddress askAddress() {
-        return new LJAddress(printStartingMessage());
+    public String askAddress() {
+        return printStartingMessage();
     }
 
     private String printStartingMessage() {
@@ -26,13 +26,17 @@ public class AddressAsker {
     }
 
     private String checkInputContent(String input) {
+        if (input.toLowerCase().equals(Z.EXIT)) {
+            Y.log(Z.EXITING);
+            System.exit(0);
+        }
         if (!input.contains(Z.LJ_POSTFIX)) {
             input = input + Z.LJ_POSTFIX;
         }
         if (!input.contains(Z.URL_PREFIX)) {
             input = Z.URL_PREFIX + input;
         }
-        Y.log("Parsing address will be: " + input);
+        Y.log(Z.PARSING_ADDRESS + input);
         return input;
     }
 
