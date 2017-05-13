@@ -1,4 +1,4 @@
-import java.util.Map;
+import java.util.List;
 
 /**
  * Created by Antoha on 5/7/2017.
@@ -6,11 +6,11 @@ import java.util.Map;
 public class Program {
 
     private final String address;
-    private final Map<String, String> linksMap;
+    private final List<String> linksList;
 
     public Program() {
         address = askAddress();
-        linksMap = createLinksMap();
+        linksList = createLinksList();
     }
 
     public void startProgram() {
@@ -24,9 +24,9 @@ public class Program {
         return asker.askAddress();
     }
 
-    private Map<String, String> createLinksMap() {
-        LinksMapCreator mapCreator = new LinksMapCreator(address);
-        return mapCreator.createMap();
+    private List<String> createLinksList() {
+        LinksCreator linksCreator = new LinksCreator(address);
+        return linksCreator.createLinks();
     }
 
     private void prepareDirectories() {
