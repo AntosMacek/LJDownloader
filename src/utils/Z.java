@@ -18,6 +18,7 @@ public class Z {
     public static final String REPLACED_SLASH = "\\/";
     public static final String STOP = ".";
     public static final String REPLACED_STOP = "\\.";
+    public static final String FILE_SEPARATOR = "\\";
 
     // LJ templates
     public static final String LJ_POSTFIX = ".livejournal.com/";
@@ -41,6 +42,7 @@ public class Z {
     public static final String EXIT = "exit";
     public static final String EXITING = "Exiting...";
     public static final String CANT_CONNECT = "Couldn't connect to ";
+    public static final String FAIL_DIR_CREATE = "Failed to create directory for LJ ";
 
     // Links Map Keys
     public static final String INITIAL_ADDRESS = "Initial_address";

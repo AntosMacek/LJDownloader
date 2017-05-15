@@ -1,3 +1,5 @@
+import utils.GlobalFlags;
+
 /**
  * Created by Antoha on 5/7/2017.
  */

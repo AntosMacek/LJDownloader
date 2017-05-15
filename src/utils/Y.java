@@ -11,4 +11,10 @@ public class Y {
         System.out.println(msg);
     }
 
+    public static void debug(Object msg) {
+        if (GlobalFlags.DEBUG) {
+            log(msg);
+        }
+    }
+
 }

@@ -1,3 +1,6 @@
+import files.DirectoryCreator;
+import parser.LinksCreator;
+
 import java.util.List;
 
 /**
@@ -7,14 +10,16 @@ public class Program {
 
     private final String address;
     private final List<String> linksList;
+    private final String dirName;
 
     public Program() {
         address = askAddress();
         linksList = createLinksList();
+        dirName = prepareDirectories();
     }
 
     public void startProgram() {
-        prepareDirectories();
+//        prepareDirectories();
         downloadLJ();
         createPDF();
     }
@@ -29,12 +34,14 @@ public class Program {
         return linksCreator.createLinks();
     }
 
-    private void prepareDirectories() {
-
+    private String prepareDirectories() {
+        DirectoryCreator dirsCreator = new DirectoryCreator(address);
+        return dirsCreator.createDirs();
     }
 
     private void downloadLJ() {
-
+        Downloader downloader = new Downloader();
+        downloader.download(linksList, dirName);
     }
 
     private void createPDF() {
