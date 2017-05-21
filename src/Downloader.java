@@ -40,6 +40,9 @@ public class Downloader {
             String filePath;
             String link = links.get(i);
             Element content = getContentFromDocument(link, docGetter);
+            if (content == null) {
+                continue;
+            }
 //            if (GlobalFlags.MULTIPLE_FILES) {
                 filePath = System.getProperty("user.dir") + Z.FILE_SEPARATOR + dirName + Z.FILE_SEPARATOR + (i + 1) + ".txt";
                 writeToMultipleFiles(formattedContent(content.text()), filePath);
