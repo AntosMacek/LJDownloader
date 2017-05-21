@@ -4,6 +4,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import utils.GlobalFlags;
 import utils.Y;
 import utils.Z;
 
@@ -67,10 +68,12 @@ public class LinksCreator {
 
     private void getArticleLinks() {
         Document doc;
+        Y.log("Getting links of articles...");
         for (String link : monthList) {
             try {
                 doc = Jsoup.connect(link).get();
                 Elements articleHrefs = doc.select(Z.TAG_LINK_PURE);
+                Y.debug("In " + link + " there are " + articleHrefs.size() + " links.");
                 String absHref;
                 for (Element el : articleHrefs) {
                     absHref = el.attr(Z.HREF_ATTRIBUTE_KEY);
@@ -83,7 +86,9 @@ public class LinksCreator {
                 }
 
             } catch (IOException e) {
-                Y.log(Z.CANT_CONNECT + link);
+                Y.log(Z.CANT_CONNECT + link + Z.NEW_LINE + Z.EXITING + Z.NEW_LINE + e);
+                GlobalFlags.URL_NOT_FOUND = true;
+                break;
             }
         }
     }

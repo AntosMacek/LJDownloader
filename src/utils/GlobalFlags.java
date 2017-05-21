@@ -8,5 +8,6 @@ public class GlobalFlags {
     public static boolean PARAM_FLAG = false;
     public static boolean DEBUG = true;
     public static boolean MULTIPLE_FILES = false;
+    public static boolean URL_NOT_FOUND = false;
 
 }

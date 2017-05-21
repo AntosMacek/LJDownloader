@@ -1,5 +1,6 @@
 import files.DirectoryCreator;
 import parser.LinksCreator;
+import utils.GlobalFlags;
 
 import java.util.List;
 
@@ -35,6 +36,9 @@ public class Program {
     }
 
     private String prepareDirectories() {
+        if (GlobalFlags.URL_NOT_FOUND) {
+            return null;
+        }
         DirectoryCreator dirsCreator = new DirectoryCreator(address);
         return dirsCreator.createDirs();
     }

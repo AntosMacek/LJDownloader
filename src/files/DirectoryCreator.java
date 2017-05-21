@@ -23,7 +23,7 @@ public class DirectoryCreator {
                 Y.debug(Z.FAIL_DIR_CREATE + mainDirName);
             }
         } catch (Exception e) {
-            Y.log(e);
+            Y.debug(e);
         }
         return mainDirName;
     }

@@ -41,7 +41,7 @@ public class Downloader {
             String link = links.get(i);
             Element content = getContentFromDocument(link, docGetter);
 //            if (GlobalFlags.MULTIPLE_FILES) {
-                filePath = System.getProperty("user.dir") + Z.FILE_SEPARATOR + dirName + Z.FILE_SEPARATOR + i + ".txt";
+                filePath = System.getProperty("user.dir") + Z.FILE_SEPARATOR + dirName + Z.FILE_SEPARATOR + (i + 1) + ".txt";
                 writeToMultipleFiles(formattedContent(content.text()), filePath);
 //            } else {
 //                writeToOneFile(content.text(), writer);
@@ -78,7 +78,7 @@ public class Downloader {
                 Y.log("The file not found!");
             }
         } catch (IOException e) {
-            Y.log(e);
+            Y.debug(e);
         }
     }
 
