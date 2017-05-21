@@ -53,4 +53,10 @@ public class Z {
     public static final int MIN_YEAR = 2007;
     public static final int MAX_MONTH = 12;
 
+    // Program parameters
+    public static final String MULTIPLE_FILES = "-m";
+
+    // Other
+    public static final String UTF8 = "UTF-8";
+
 }

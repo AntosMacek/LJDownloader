@@ -15,9 +15,9 @@ public class DocumentGetter {
         Document doc = null;
         try {
             doc = Jsoup.connect(address).get();
-            Y.log("The title is " + doc.title());
+//            Y.debug("The title is " + doc.title());
         } catch (IOException e) {
-            Y.log(e.toString());
+            Y.debug(e);
         }
         return doc;
     }

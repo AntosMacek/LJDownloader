@@ -96,7 +96,7 @@ public class LinksCreator {
 
     private String createArticleLinkTemplate() {
         String ret = address.replace(Z.SLASH, Z.REPLACED_SLASH).replace(Z.STOP, Z.REPLACED_STOP) + Z.ARTICLE_TEMPLATE;
-        Y.log("Template is " + ret);
+        Y.debug("Template is " + ret);
         return ret;
     }
 
