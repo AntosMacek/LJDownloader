@@ -22,7 +22,7 @@ public class Z {
 
     // LJ templates
     public static final String LJ_POSTFIX = ".livejournal.com/";
-    public static final String URL_PREFIX = "http://";
+    public static final String URL_PREFIX = "https://";
     public static final String ARCHIVE_POSTFIX = "calendar";
     public static final String ARCHIVE_DOM = "<div class=\"entry-title\">\n" +
             "       Archive\n" +

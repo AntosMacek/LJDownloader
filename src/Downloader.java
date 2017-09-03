@@ -1,9 +1,13 @@
 import org.jsoup.nodes.Element;
 import parser.DocumentGetter;
+import utils.GlobalFlags;
 import utils.Y;
 import utils.Z;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -22,17 +26,17 @@ public class Downloader {
 
     public void download(List<String> links, String dirName) {
         DocumentGetter docGetter = new DocumentGetter();
-//        PrintWriter writer = null;
-//        String fileName = null;
-//        if (!GlobalFlags.MULTIPLE_FILES) {
-//            fileName = System.getProperty("user.dir") + Z.FILE_SEPARATOR + dirName + Z.FILE_SEPARATOR + dirName + ".txt";
-//            try {
-//                writer = new PrintWriter(fileName, Z.UTF8);
-//                Y.debug("Writing to file " + fileName);
-//            } catch (FileNotFoundException | UnsupportedEncodingException e) {
-//                Y.debug(e);
-//            }
-//        }
+        PrintWriter writer = null;
+        String fileName = null;
+        if (!GlobalFlags.MULTIPLE_FILES) {
+            fileName = System.getProperty("user.dir") + Z.FILE_SEPARATOR + dirName + Z.FILE_SEPARATOR + dirName + ".txt";
+            try {
+                writer = new PrintWriter(fileName, Z.UTF8);
+                Y.debug("Writing to file " + fileName);
+            } catch (FileNotFoundException | UnsupportedEncodingException e) {
+                Y.debug(e);
+            }
+        }
         int linksSize = links.size();
         int percentDelimiter = linksSize / PERCENT_SHOWER;
         int percent = percentDelimiter;
@@ -43,29 +47,29 @@ public class Downloader {
             if (content == null) {
                 continue;
             }
-//            if (GlobalFlags.MULTIPLE_FILES) {
+            if (GlobalFlags.MULTIPLE_FILES) {
                 filePath = System.getProperty("user.dir") + Z.FILE_SEPARATOR + dirName + Z.FILE_SEPARATOR + (i + 1) + ".txt";
                 writeToMultipleFiles(formattedContent(content.text()), filePath);
-//            } else {
-//                writeToOneFile(content.text(), writer);
-//            }
+            } else {
+                writeToOneFile(content.text(), writer);
+            }
 
             // TODO: write to one file
             if (i == percent) {
                 percent += percentDelimiter;
                 String percentCounter = String.format("%.2f", ((float) i/ (float) linksSize) * 100);
                 Y.log(percentCounter + "% (" + i + "/" + linksSize + ")");
-//                try {
-//                    writer.close();
-//                    writer = new PrintWriter(System.getProperty("user.dir") + Z.FILE_SEPARATOR + dirName + Z.FILE_SEPARATOR + dirName + percentCounter + ".txt", Z.UTF8);
-//                } catch (IOException e) {
-//                    Y.debug(e);
-//                }
+                try {
+                    writer.close();
+                    writer = new PrintWriter(System.getProperty("user.dir") + Z.FILE_SEPARATOR + dirName + Z.FILE_SEPARATOR + dirName + percentCounter + ".txt", Z.UTF8);
+                } catch (IOException e) {
+                    Y.debug(e);
+                }
             }
         }
-//        if (!GlobalFlags.MULTIPLE_FILES && writer != null) {
-//            writer.close();
-//        }
+        if (!GlobalFlags.MULTIPLE_FILES && writer != null) {
+            writer.close();
+        }
     }
 
     private void writeToMultipleFiles(String content, String filePath) {
@@ -85,14 +89,14 @@ public class Downloader {
         }
     }
 
-//    private void writeToOneFile(String content, PrintWriter writer) {
-////        try /*(PrintWriter writer = new PrintWriter(fileName, Z.UTF8))*/ {
-//            writer.println(content);
-////            Y.debug("Writing to file " + fileName);
-////        } catch (IOException e) {
-////            Y.log(e);
-////        }
-//    }
+    private void writeToOneFile(String content, PrintWriter writer) {
+//        try /*(PrintWriter writer = new PrintWriter(fileName, Z.UTF8))*/ {
+            writer.println(content);
+//            Y.debug("Writing to file " + fileName);
+//        } catch (IOException e) {
+//            Y.log(e);
+//        }
+    }
 
     private Element getContentFromDocument(String link, DocumentGetter docGetter) {
         Element ret = null;
